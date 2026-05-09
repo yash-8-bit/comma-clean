@@ -1,11 +1,13 @@
-from fastapi import FastAPI,File, UploadFile
-from fastapi.responses  import FileResponse
+from fastapi import FastAPI
+from router import csv, index,processCsv
+from fastapi.staticfiles import StaticFiles
 app = FastAPI()
 
-@app.get("/")
-def read_root():
-    return FileResponse("./pages/home.html")
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
-@app.post("/submit")
-async def submit(file: UploadFile):
-     return {"filetype": file.content_type}
+app.include_router(index.router,tags=["Home"])
+app.include_router(csv.router,tags=["Csv"])
+app.include_router(processCsv.router,tags=["processCsv"])
+
+
+

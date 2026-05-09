@@ -1,0 +1,14 @@
+
+{% extends "base.html" %}
+
+
+{% block child %}  
+
+<h1>Process Page</h1>
+
+<form action="/process-csv" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" >
+    <button type="submit">Submit</button>
+</form>
+
+{% endblock %}  

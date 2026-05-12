@@ -1,0 +1,109 @@
+@import url("https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+}
+
+
+
+:root {
+  font-family: "Elms Sans", sans-serif;
+  background-color: rgb(255, 217, 159);
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.container {
+  padding: 0px 27px 0px 27px;
+}
+
+.home {
+  height: 100vh;
+}
+
+.home h1 {
+  font-size: 50px;
+  text-align: center;
+}
+
+.home :first-child > div > p {
+  font-size: 17px;
+  text-align: center;
+  background-color: #d3ff00;
+}
+
+.home :first-child > div > span {
+  display: block;
+  margin-top: 12px;
+}
+
+.home :first-child > div > span > a {
+  width: 50%;
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none;
+  background-color: #007663;
+  color: white;
+  border-radius: 2px;
+  transition: color ease-in-out 0.3s;
+}
+.home :first-child > div > span > a:hover {
+  color: #007663;
+  background-color: white;
+}
+
+.submitCsv {
+  height: 100vh;
+}
+
+.submitCsv hr{
+  margin-bottom: 12px;
+}
+
+.submitCsv h1 {
+  color: brown;
+   
+  font-size: 27px;
+  font-weight: 600;
+}
+
+.submitCsv h3 {
+	font-size: 15px;
+	width: fit-content;
+	background-color: #148460;
+	color: white;
+	padding: 2px 10px;
+	font-weight: unset;
+}
+
+.submitCsv > .container >div {
+  display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+#csvFileInput{
+  display: none;
+}
+
+.submitCsv > .container > div > div:nth-child(2) label {
+	border: 1.3px solid #00000042;
+	width: 350px;
+	display: block;
+	height: 143px;
+	margin-top: 16px;
+	border-radius: 0.4px;
+}
+
+
+@media screen and (max-width: 800px) {
+  .home h1 {
+    font-size: 30px;
+  }
+}

@@ -1,14 +1,18 @@
-
-{% extends "base.html" %}
-
-
-{% block child %}  
-
-<h1>Process Page</h1>
-
-<form action="/process-csv" method="post" enctype="multipart/form-data">
-    <input type="file" name="file" >
-    <button type="submit">Submit</button>
-</form>
-
-{% endblock %}  
+{% extends "base.html" %} {% block child %}
+<div class="submitCsv">
+  <div class="container">
+    <h1>Submit Your CSV</h1>
+    <hr />
+    <div>
+      <div>
+        <h3>Filters:</h3>
+      </div>
+      <div>
+        <h3>Upload File:</h3>
+        <label for="csvFileInput"></label>
+        <input type="file" id="csvFileInput" />
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

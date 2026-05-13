@@ -4,8 +4,6 @@
   margin: 0;
 }
 
-
-
 :root {
   font-family: "Elms Sans", sans-serif;
   background-color: rgb(255, 217, 159);
@@ -63,44 +61,81 @@
   height: 100vh;
 }
 
-.submitCsv hr{
+.submitCsv hr {
   margin-bottom: 12px;
 }
 
 .submitCsv h1 {
   color: brown;
-   
+
   font-size: 27px;
   font-weight: 600;
 }
 
 .submitCsv h3 {
-	font-size: 15px;
-	width: fit-content;
-	background-color: #148460;
-	color: white;
-	padding: 2px 10px;
-	font-weight: unset;
+  font-size: 15px;
+  width: fit-content;
+  background-color: #148460;
+  color: white;
+  padding: 2px 10px;
+  font-weight: unset;
 }
 
-.submitCsv > .container >div {
+.submitCsv > .container > div:nth-of-type(1) {
   display: grid;
-    grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr);
 }
 
-#csvFileInput{
+#csvFileInput {
   display: none;
 }
 
-.submitCsv > .container > div > div:nth-child(2) label {
-	border: 1.3px solid #00000042;
-	width: 350px;
-	display: block;
-	height: 143px;
-	margin-top: 16px;
-	border-radius: 0.4px;
+.submitCsv > .container > div:nth-of-type(1) > div:nth-child(2) label {
+  border: 1.3px solid #00000042;
+  width: 350px;
+  display: block;
+  height: 143px;
+  margin-top: 16px;
+  border-radius: 0.4px;
+  padding: 7px;
 }
 
+.submitCsv > .container > div:nth-of-type(1) > div:nth-child(2) label > p {
+  font-size: 13px;
+}
+
+
+.submitCsv > .container > div:nth-of-type(2) button {
+  outline: 0;
+  background: 0 0;
+  border: 1px solid #000;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  overflow: hidden;
+  padding: 2px 13px;
+  text-overflow: ellipsis;
+  transition: all 0.14s ease-out;
+  white-space: nowrap;
+  margin: 0px 3px;
+  &:hover {
+    box-shadow: 4px 4px 0 #000;
+    transform: translate(-4px, -4px);
+  }
+  &:focus-visible {
+    outline-offset: 1px;
+  }
+}
+
+.submitCsv > .container > div:nth-of-type(2) button:nth-child(1):hover{
+  background-color:rgb(205, 63, 63);
+  color: white;
+}
+
+.submitCsv > .container > div:nth-of-type(2) button:nth-child(2):hover{
+  background-color:peru;
+  color: white;
+}
 
 @media screen and (max-width: 800px) {
   .home h1 {

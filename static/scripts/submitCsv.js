@@ -1,6 +1,12 @@
+let file;
 const fileInput = document.getElementById("csvFileInput_");
 const InputTag = document.getElementById("csvFileInput");
 const filePara = document.getElementById("filePara");
+const SubmitButton = document.getElementById("submit");
+
+function showToast() {
+  document.getElementById("toast").innerText = "Please Select a Csv File First";
+}
 
 async function handleCsvFile(file) {
   const fd = new FormData();
@@ -26,10 +32,15 @@ async function handleCsvFile(file) {
   }
 }
 
+SubmitButton.addEventListener("click", (e) => {
+  if (!(file instanceof File)) {
+  }
+});
+
 fileInput.addEventListener("dragover", (e) => e.preventDefault());
 fileInput.addEventListener("drop", (e) => {
   e.preventDefault();
-  const file = e.dataTransfer.files.item(0);
+  file = e.dataTransfer.files.item(0);
 
   filePara.innerText = `FileName : ${file.name}`;
 });
@@ -37,7 +48,7 @@ fileInput.addEventListener("drop", (e) => {
 InputTag.addEventListener("change", (e) => {
   e.preventDefault();
   if (e.target.files[0]) {
-    const file = e.target.files[0];
+    file = e.target.files[0];
     filePara.innerText = `FileName : ${file.name}`;
   } else {
   }

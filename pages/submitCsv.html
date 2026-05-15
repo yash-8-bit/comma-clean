@@ -1,5 +1,6 @@
 {% extends "base.html" %} {% block child %}
-<div class="submitCsv">
+<div id="toast"></div>
+<div class="submitCsv">  
   <div class="container">
     <h1>Submit Your CSV</h1>
     <hr />
@@ -7,8 +8,27 @@
       <div>
         <h3>Filters &RightArrow;</h3>
         <div>
-          <input type="radio" name="type" id="typeHeader"><label for="typeHeader">Header</label>
-          <input type="radio" name="type" id="typeData"><label for="typeData">Data</label>
+          {% for type in ['Basic','Process'] %}
+          <p>{{ type }} :</p>
+          {% if type == 'Basic' %} {% for row in basicColumns %}
+          <span>
+            <input
+              type="checkbox"
+              name="{{ row['name'] }}"
+              id="{{ row['id'] }}"
+            />
+            <label for="{{ row['id'] }}">{{ row['label'] }}</label>
+          </span>
+          {% endfor %} {% else %} {% for row in process %}
+          <span>
+            <input
+              type="checkbox"
+              name="{{ row['name'] }}"
+              id="{{ row['id'] }}"
+            />
+            <label for="{{ row['id'] }}">{{ row['label'] }}</label>
+          </span>
+          {% endfor %} {% endif %} {% endfor %}
         </div>
       </div>
       <div>
@@ -16,7 +36,7 @@
         <label for="csvFileInput" id="csvFileInput_">
           <p id="filePara">Drop or Select a File</p>
         </label>
-        <input type="file" id="csvFileInput" />
+        <input accept=".csv" type="file" id="csvFileInput" />
       </div>
     </div>
     <div>

@@ -9,8 +9,18 @@
   background-color: rgb(255, 217, 159);
 }
 
-input[type="option"] {
+input[type="radio"] {
   accent-color: #ff5722;
+}
+
+input[type="text"] {
+  background-color: transparent;
+  border: 1px solid gray;
+  padding-left: 7px;
+}
+
+input[type="text"]:focus {
+  outline: none;
 }
 
 .center {
@@ -189,8 +199,40 @@ input[type="checkbox"] {
   padding: 9px;
 }
 
+#helperParent {
+  animation: animation 1s ease-in-out;
+}
+
+@keyframes animation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100;
+  }
+}
+
+#helperParent span {
+  margin-right: 12px;
+}
+
+#helperParent span label {
+  margin-left: 3px;
+}
+
+.submitCsv .container >  div:nth-of-type(2){
+  margin-top: 12px;
+}
+
 @media screen and (max-width: 800px) {
   .home h1 {
     font-size: 30px;
+  }
+  .submitCsv > .container > div:nth-of-type(1) {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .submitCsv > .container > div:nth-of-type(1) > div:nth-child(2) label {
+    width: 252px;
   }
 }

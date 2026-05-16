@@ -1,5 +1,5 @@
 {% extends "base.html" %} {% block child %}
-<div id="toast"></div>
+<div id="dialog"></div>
 <div class="submitCsv">  
   <div class="container">
     <h1>Submit Your CSV</h1>
@@ -7,7 +7,7 @@
     <div>
       <div>
         <h3>Filters &RightArrow;</h3>
-        <div>
+        <div id="filters">
           {% for type in ['Basic','Process'] %}
           <p>{{ type }} :</p>
           {% if type == 'Basic' %} {% for row in basicColumns %}

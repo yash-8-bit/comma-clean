@@ -3,9 +3,30 @@ const fileInput = document.getElementById("csvFileInput_");
 const InputTag = document.getElementById("csvFileInput");
 const filePara = document.getElementById("filePara");
 const SubmitButton = document.getElementById("submit");
+const dialog = document.getElementById("dialog");
+const filters = document.getElementById("filters");
 
-function showToast() {
-  document.getElementById("toast").innerText = "Please Select a Csv File First";
+document.getElementById("removeMissingInput").addEventListener("change",(e)=>{
+  console.log(e.target.checked)
+  if(e.target.checked){
+    
+  }
+})
+
+
+function cleanDialog() {
+  dialog.className = "";
+  dialog.innerHTML = "";
+}
+
+function dialogMessage(message) {
+  dialog.className = "dialogshown";
+  dialog.innerHTML = `
+    <div>${message}
+    <button>Ok</button>
+    </div>`;
+  const action = document.querySelector("#dialog > div > button");
+  action.addEventListener("click", cleanDialog);
 }
 
 async function handleCsvFile(file) {
@@ -34,6 +55,33 @@ async function handleCsvFile(file) {
 
 SubmitButton.addEventListener("click", (e) => {
   if (!(file instanceof File)) {
+    dialogMessage("Please Select a Csv File First");
+  } else {
+    const Checked = [];
+    const basicIds = ["headerInput", "DataInput"];
+    for (const row of basicIds) {
+      let x = document.getElementById(row);
+      Checked.push(x.checked);
+    }
+    if (!Checked[0] && !Checked[1]) {
+      dialogMessage("Select atleast one basic filter");
+      return;
+    }
+    Checked.length = 0;
+    const processIds = [
+      "uppercaseInput",
+      "lowercaseInput",
+      "capitalizeInput",
+      "removeMissingInput",
+      "fillDefaultInput",
+    ];
+    for (const row of processIds) {
+      let x = document.getElementById(row);
+      Checked.push(x.checked);
+    }
+    if ((Checked.filter((m)=> m === true).length === 0)) {
+      dialogMessage("Select atleast one process filter");
+    }
   }
 });
 
@@ -42,14 +90,13 @@ fileInput.addEventListener("drop", (e) => {
   e.preventDefault();
   file = e.dataTransfer.files.item(0);
 
-  filePara.innerText = `FileName : ${file.name}`;
+  filePara.innerText = `FileName : ${file.name} \nFileSize : ${file.size}`;
 });
 
 InputTag.addEventListener("change", (e) => {
   e.preventDefault();
   if (e.target.files[0]) {
     file = e.target.files[0];
-    filePara.innerText = `FileName : ${file.name}`;
-  } else {
+    filePara.innerText = `FileName : ${file.name} \nFileSize : ${file.size}`;
   }
 });

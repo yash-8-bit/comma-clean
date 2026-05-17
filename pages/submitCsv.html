@@ -1,6 +1,6 @@
 {% extends "base.html" %} {% block child %}
 <div id="dialog"></div>
-<div class="submitCsv">  
+<div class="submitCsv">
   <div class="container">
     <h1>Submit Your CSV</h1>
     <hr />
@@ -19,15 +19,20 @@
             />
             <label for="{{ row['id'] }}">{{ row['label'] }}</label>
           </span>
-          {% endfor %} {% else %} {% for row in process %}
-          <span>
-            <input
-              type="checkbox"
-              name="{{ row['name'] }}"
-              id="{{ row['id'] }}"
-            />
-            <label for="{{ row['id'] }}">{{ row['label'] }}</label>
-          </span>
+          {% endfor %} {% else %} {% for obj in process %}
+          <div id="{{ obj['id'] }}">
+            {% for i in obj['labels'] %}
+            <span>
+              <input
+                type="radio"
+                name="{{ obj['name'] }}"
+                id="{{ i }}"
+                value="{{ i }}"
+              />
+              <label for="{{ i }}">{{ i }}</label>
+            </span>
+            {% endfor %}
+          </div>
           {% endfor %} {% endif %} {% endfor %}
         </div>
       </div>
@@ -40,7 +45,7 @@
       </div>
     </div>
     <div>
-      <button id="cancel">Cancel</button><button id="submit">Submit</button>
+      <button id="clean">Clean</button><button id="submit">Submit</button>
     </div>
   </div>
 </div>

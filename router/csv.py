@@ -16,34 +16,18 @@ def csv(request :Request):
             "label":"Data",
             "id" : "DataInput"
         }]
-    process = [{
-            "name":"uppercase",
-            "label":"Uppercase",
-            "id" : "uppercaseInput"
-        },{
-            "name":"lowercase",
-            "label":"Lowercase",
-            "id" : "lowercaseInput"
-        },
-        {
-            "name":"capitalize",
-            "label":"Capitalize",
-            "id" : "capitalizeInput"
-        },
-        {
-            "name":"removeMissing",
-            "label":"Remove Missing",
-            "id" : "removeMissingInput"
-        },
-        {
-            "name":"fillDefault",
-            "label":"Fill Default",
-            "id" : "fillDefaultInput"
-        },
-        
-        ]
+    radioprocess = [{
+        "id" : "_1",
+        "name" : "process1",
+        "labels":["Uppercase","Lowercase","Capitalize"]
+    },{
+        "id" : "_2",
+        "name":"process2",
+        "labels":["Remove Missing","Fill Default"]
+    }]
+   
     return  templates.TemplateResponse(
         request=request, name="submitCsv.html",
-        context={"basicColumns" :basicColumns,"process":process}
+        context={"basicColumns" :basicColumns,"process":radioprocess}
         
     )
